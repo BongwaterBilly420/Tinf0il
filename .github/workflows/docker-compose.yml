@@ -1,9 +1,21 @@
-services:
-  ultraviolet:
-    build:
-      context: .
-      dockerfile: docker/Dockerfile
-      args:
-        - NPM_BUILD=npm ci --omit=dev --frozen-lockfile
-    ports:
-      - "8080:8080"
+name: docker-compose.yml
+
+on:
+ push:
+ workflow_dispatch:
+    
+ fork:
+    
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+       
+  context: .
+  dockerfile: docker/Dockerfile
+
+  name: Build the Docker image
+  working-directory: docker
+  run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
