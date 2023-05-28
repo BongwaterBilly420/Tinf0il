@@ -25,4 +25,4 @@ jobs:
           automatic_release_tag: latest
           prerelease: true
           title: Dev Build
-          files: /app
+          folder: /app
