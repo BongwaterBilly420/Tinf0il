@@ -2,7 +2,7 @@ FROM quay.io/np22-jpg/fedora-npm AS devel
 ARG NPM_BUILD="npm install"
 
 RUN mkdir /app
-WORKDIR /Tinf0il 
+WORKDIR /app
 
 COPY package.json package-lock.json ./
 RUN $NPM_BUILD
