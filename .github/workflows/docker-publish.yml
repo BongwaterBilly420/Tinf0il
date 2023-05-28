@@ -26,5 +26,3 @@ jobs:
           prerelease: true
           title: Dev Build
           files: |
-           "public",
-           "lib"
