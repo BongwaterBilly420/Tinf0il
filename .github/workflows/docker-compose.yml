@@ -1,21 +1,18 @@
-name: docker-compose.yml
+name: Docker Image CI
 
 on:
- push:
- workflow_dispatch:
-    
- fork:
-    
+  push:
+    branches: [ "main" ]
+
+jobs:
+
   build:
 
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v3
-       
-  context: .
-  dockerfile: docker/Dockerfile
-
-  name: Build the Docker image
-  working-directory: docker
-  run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+   
+    - name: Build the Docker image
+      working-directory: docker
+      run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
